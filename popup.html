@@ -1,0 +1,224 @@
+<!doctype html>
+<html id="mainFrame">
+   <head>
+      <title>Salesforce Utility</title>
+      <style>
+	  #mainFrame,body, #searchContainer, #errors , #query-results{
+		background-color : #145E69;
+	  }
+         body {
+         min-width: 600px;
+         overflow-x: hidden;
+		 text-align: center;
+         }
+         img {
+         margin: 5px;
+         border: 2px solid black;
+         vertical-align: middle;
+         width: 75px;
+         height: 75px;
+         }
+		 .select-style {
+			border: 1px solid #ccc;
+			width: 120px;
+			border-radius: 3px;
+			overflow: hidden;
+			background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
+		}
+
+		.select-style select {
+			padding: 5px 8px;
+			width: 130%;
+			border: none;
+			box-shadow: none;
+			background: transparent;
+			background-image: none;
+			-webkit-appearance: none;
+		}
+
+		.select-style select:focus {
+			outline: none;
+		}
+		
+		
+				* {
+		  outline: 0;
+		  font-family: sans-serif
+		}
+		
+		label.choose {
+		  color: #FFF;
+		}
+		.container {
+		  width: 500px;
+		  margin: 50px auto 0;
+		  text-align: center
+		}
+
+		/*Styling Selectbox*/
+		.dropdown {
+		  width: 200px;
+		  display: inline-block;
+		  background-color: #fff;
+		  border-radius: 5px;
+		  box-shadow: 0 0 2px rgb(204, 204, 204);
+		  transition: all .5s ease;
+		  position: relative;
+		  font-size: 11px;
+		  color: #474747;
+		  height: 100%;
+		  text-align: left
+		}
+		.dropdown .select {
+			cursor: pointer;
+			display: block;
+			padding: 10px
+		}
+		.dropdown .select > i {
+			font-size: 13px;
+			color: #888;
+			cursor: pointer;
+			transition: all .3s ease-in-out;
+			float: right;
+			line-height: 20px
+		}
+		.dropdown:hover {
+			box-shadow: 0 0 4px rgb(204, 204, 204)
+		}
+		.dropdown:active {
+			background-color: #f8f8f8
+		}
+		.dropdown.active:hover,
+		.dropdown.active {
+			box-shadow: 0 0 4px rgb(204, 204, 204);
+			border-radius: 5px 5px 0 0;
+			background-color: #f8f8f8
+		}
+		.dropdown.active .select > i {
+			transform: rotate(-90deg)
+		}
+		.dropdown .dropdown-menu {
+			position: absolute;
+			background-color: #fff;
+			width: 100%;
+			left: 0;
+			margin-top: 1px;
+			box-shadow: 0 1px 2px rgb(204, 204, 204);
+			border-radius: 0 1px 5px 5px;
+			overflow: hidden;
+			display: none;
+			max-height: 144px;
+			overflow-y: auto;
+			z-index: 9
+		}
+		.dropdown .dropdown-menu li {
+			padding: 10px;
+			transition: all .2s ease-in-out;
+			cursor: pointer
+		} 
+		.dropdown .dropdown-menu {
+			padding: 0;
+			list-style: none
+		}
+		.dropdown .dropdown-menu li:hover {
+			background-color: #f2f2f2
+		}
+		.dropdown .dropdown-menu li:active {
+			background-color: #e2e2e2
+		}
+		#query {
+			width:500px;
+			background-color:#FFF;
+			color:#222;
+			font-size:14px;
+			resize:none;
+			padding-left:20px;
+			padding-right:20px;
+			padding-top:20px;
+			padding-bottom:20px;
+			border-radius:12px;
+			
+		}
+		.choose{
+			font-family: -webkit-pictograph;
+			font-size: x-large;
+			font-weight: bolder;
+			color: #FFF;
+			}
+		img{
+			border: none;
+			width: auto;
+		}
+		 #submit-query {
+		  display: inline-block;
+		  border-radius: 4px;
+		  background-color: #f4511e;
+		  border: none;
+		  color: #FFF;
+		  text-align: center;
+		  font-size: 12px;
+		  padding: 10px;
+		  width: 100px;
+		  transition: all 0.5s;
+		  cursor: pointer;
+		  margin: 5px;
+		}
+
+		#submit-query span {
+		  cursor: pointer;
+		  display: inline-block;
+		  position: relative;
+		  transition: 0.5s;
+		}
+
+		#submit-query span:after {
+		  content: '\00bb';
+		  position: absolute;
+		  opacity: 0;
+		  top: 0;
+		  right: -20px;
+		  transition: 0.5s;
+		}
+
+		#submit-query:hover span {
+		  padding-right: 25px;
+		}
+
+		#submit-query:hover span:after {
+		  opacity: 1;
+		  right: 0;
+		}
+		#headContainer {
+		    height: 10px;
+			width: max-content;
+		}
+      </style>
+      <script src="js/jquery.js"></script>
+      <script src="popup.js"></script>
+   </head>
+	
+   <body>
+    <div id="headContainer">
+		<img src="sflogo.png"></img>
+		<label class="choose">Search Anything Here!</label>
+		</div>
+      <div id="searchContainer">
+		  <div class="container">
+		  <div class="dropdown" >
+			<div class="select">
+			  <span>Choose an Option</span>
+			  <i class="fa fa-chevron-left"></i>
+			</div>
+			<input type="hidden" name="gender">
+			<ul class="dropdown-menu" id="dropDownList">   
+			</ul>
+		  </div>
+		   <input type="button" id="submit-query" value="Get Data"></input>
+        </div>	
+		<br/>
+		 <textarea id="query" name="query" placeholder="Enter Search data..." style="overflow: hidden;word-wrap: break-word;height: 80px;overflow-y: auto;" ></textarea>
+      </div>
+      <div id="errors"></div>
+      <div id="query-results"></div>
+   </body> 
+</html>
