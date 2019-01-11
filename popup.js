@@ -147,7 +147,10 @@ $jq(document).ready(function()
 		
       chrome.tabs.sendMessage(tabs[0].id, {name: $jq('.dropdown').find('input').val(), queryString: queryString}, function(response)
       {
-       
+       if(response === undefined){
+		   setResponseForUndefined(response);
+		   return;
+	   }
 		if(response.queryString == "forceObjectFields")
 			buildObjectFieldTable(response);
 		
@@ -156,6 +159,14 @@ $jq(document).ready(function()
       });
     });
   };
+
+	function setResponseForUndefined(results){
+		var tableHtml = '<table id="errorTable"><tr>';
+			tableHtml += '<td colspan="2" align="center" style="font-size:medium">Connection Lost. Please refresh the active chrome tab.</td></tr></table>';
+			$jq('#errors').html(tableHtml);
+			$jq('#errorTable').css({"font-family": "arial, sans-serif" , "border-collapse": "collapse","color":"white"});
+			$jq('#errorTable td').css({"border": "1px solid #dddddd", "padding": "8px", "text-align": "left"});
+	}
 
   // build salesforce domain for hyperlinks later
   chrome.tabs.getSelected(null, function(tab)
@@ -182,19 +193,24 @@ $jq(document).ready(function()
       
 $jq('#submit-query').click(function(event)
   {
+	$jq('#errors').html('');
     var query = $jq('#query').val();
-	if(query == null || query.trim() == "") {
+	var optionSelected = $jq('.dropdown').find('input').val();
+	if(query == null || query.trim() == "" || optionSelected == null || optionSelected.trim() == "") {
 		var tableHtml = '<table id="errorTable"><tr>';
-		tableHtml += '<td colspan="2" align="center" style="font-size:medium">Please enter search text!</td></tr></table>';
+		tableHtml += '<td colspan="2" align="center" style="font-size:medium">Please select an option & Enter search data!</td></tr></table>';
 		$jq('#errors').html(tableHtml);
 		$jq('#errorTable').css({"font-family": "arial, sans-serif" , "border-collapse": "collapse","color":"white"});
+		$jq('#errorTable td').css({"border": "1px solid #dddddd", "padding": "8px", "text-align": "left"});
 		return;
 	  }
+	  
     queryClient(query);   
   });
 
      /*Dropdown Menu*/
 		$jq('.dropdown').click(function () {
+				$jq('#errors').html('');
 				$jq(this).attr('tabindex', 1).focus();
 				$jq(this).toggleClass('active');
 				$jq(this).find('.dropdown-menu').slideToggle(300);
