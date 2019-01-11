@@ -1,6 +1,4 @@
-# SalesforceChromeExtension
-
-Force.com Search Utility.
+# Force.com Search Utility (Chrome Extension).
 
 This extension can be used to search metadata of an object and performing soql queries. 
 This is verison 1.0. The Development is In-Progress. It is specifically designed for chrome browser.
@@ -19,6 +17,5 @@ How it works!
 
 Limitations:
 
-1. Might not work if more than one org instances are open chrome.
-2. can work only on chrome.
-3. might require to refresh the active tab on chrome. 
+1. Might not work if more than one org instances are open in chrome.
+3. might requires to refresh the active tab on chrome. 
