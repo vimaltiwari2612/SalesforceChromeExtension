@@ -14,7 +14,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
     var sendResponse = sendResponse;
 	var client = new forcetk.Client();
   	client.setSessionToken(getValueFromCookie("sid"));
-	
+
 	if (request.name == "forcequery" && request.queryString != "")
 	{
 	

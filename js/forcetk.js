@@ -64,8 +64,7 @@ if (forcetk.Client === undefined) {
                 this.proxyUrl = null;
             } else {
                 // In Visualforce
-                this.proxyUrl = location.protocol + "//" + location.hostname
-                    + "/services/proxy";
+                this.proxyUrl = location.protocol + "//" + location.hostname+ "/services/proxy";
             }
             this.authzHeader = "Authorization";
         } else {
@@ -195,7 +194,6 @@ if (forcetk.Client === undefined) {
      * Note, raw XMLHttpRequest because JQuery mangles the arraybuffer
      * This should work on any browser that supports XMLHttpRequest 2 because arraybuffer is required. 
      * For mobile, that means iOS >= 5 and Android >= Honeycomb
-     * @author Tom Gersic
      * @param path resource path relative to /services/data
      * @param mimetype of the file
      * @param callback function to which response will be passed
