@@ -19,3 +19,5 @@ Limitations:
 
 1. Might not work if more than one org instances are open in chrome.
 3. might requires to refresh the active tab on chrome. 
+
+Credits: [@mwelburn](https://github.com/mwelburn/Chrome-Extension-Force-SOQL-Popup)
