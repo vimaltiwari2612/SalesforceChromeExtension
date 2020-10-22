@@ -12,6 +12,8 @@ How to use!
 
 How it works!
 
+![Demo](https://github.com/vimaltiwari2612/SalesforceChromeExtension/blob/master/Demo.gif)
+
 ![SOQL](https://github.com/vimaltiwari2612/SalesforceChromeExtension/blob/master/screenshot%201.png)
 ![screenshot](https://github.com/vimaltiwari2612/SalesforceChromeExtension/blob/master/screenshot%202.png)
 
