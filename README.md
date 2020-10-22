@@ -20,6 +20,8 @@ How it works!
 Limitations:
 
 1. Might not work if more than one org instances are open in chrome.
+2. Have some issues while working in lightning environment.
 3. might requires to refresh the active tab on chrome. 
+
 
 Credits: [@mwelburn](https://github.com/mwelburn/Chrome-Extension-Force-SOQL-Popup)
