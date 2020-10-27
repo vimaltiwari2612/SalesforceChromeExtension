@@ -23,5 +23,7 @@ Limitations:
 2. Have some issues while working in lightning environment.
 3. might requires to refresh the active tab on chrome. 
 
+API Used:
+[Force.com-JavaScript-REST-Toolkit](https://github.com/developerforce/Force.com-JavaScript-REST-Toolkit)
 
 Credits: [@mwelburn](https://github.com/mwelburn/Chrome-Extension-Force-SOQL-Popup)
