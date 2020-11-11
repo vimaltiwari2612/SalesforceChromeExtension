@@ -28,3 +28,6 @@ This is version 1.0. The Development is In-Progress. It is specifically designed
 
 # Credits: 
 [@mwelburn](https://github.com/mwelburn/Chrome-Extension-Force-SOQL-Popup)
+
+# Other Similar Project
+[Chrome Extension for creating charts like Bar, Pie, Line etc](https://github.com/vimaltiwari2612/Chrome-Extention-Charts)
